@@ -13,12 +13,14 @@
         if ([dictionary isKindOfClass:NSDictionary.class]) {
             NSString *ocr_origin_image_string = [dictionary objectForKey:@"ocr_origin_image"];
             if ([ocr_origin_image_string isKindOfClass:NSString.class]) {
-                self.ocr_origin_image = [[NSData alloc] initWithBase64EncodedString:ocr_origin_image_string options:kNilOptions];
+                NSArray *lines = [ocr_origin_image_string componentsSeparatedByString:@","];
+                self.ocr_origin_image = [[NSData alloc] initWithBase64EncodedString:lines[1] options:kNilOptions];
             }
             
             NSString *ocr_masking_image_string = [dictionary objectForKey:@"ocr_masking_image"];
             if ([ocr_masking_image_string isKindOfClass:NSString.class]) {
-                self.ocr_masking_image = [[NSData alloc] initWithBase64EncodedString:ocr_masking_image_string options:kNilOptions];
+                NSArray *lines = [ocr_masking_image_string componentsSeparatedByString:@","];
+                self.ocr_masking_image = [[NSData alloc] initWithBase64EncodedString:lines[1] options:kNilOptions];
             }
         }
     }
