@@ -35,18 +35,20 @@
 - (void)loadView {
     WKWebViewConfiguration *webConfiguration = [WKWebViewConfiguration new];
     [webConfiguration setAllowsInlineMediaPlayback:YES];
+    webConfiguration.preferences.javaScriptEnabled = YES;
     
     // OCR 정보를 담은 postMessage 설정
     NSString *requestData = [self encodedPostMessage];
     if (requestData != nil) {
-        WKUserScript *userScript = [[WKUserScript alloc] initWithSource:[NSString stringWithFormat:@"postMessage('%@')", requestData]
-                                                          injectionTime:WKUserScriptInjectionTimeAtDocumentEnd
+        NSString *jsScript = [NSString stringWithFormat:@"setTimeout(function() { usebwasmocrreceive('%@'); }, 500);", requestData];
+        WKUserScript *userScript = [[WKUserScript alloc] initWithSource:jsScript
+                                                          injectionTime: WKUserScriptInjectionTimeAtDocumentEnd
                                                        forMainFrameOnly:YES];
         [webConfiguration.userContentController addUserScript:userScript];
-        webConfiguration.preferences.javaScriptEnabled = YES;
     }
     // 메시지 수신할 핸들러 등록
-    self.responseName = @"ocrwasmsdk";
+    // web에서 호출할 펑션이름 webkit.messageHandlers.{AppFunction}.postMessage("원하는 데이터")
+    self.responseName = @"usebwasmocr";
     [webConfiguration.userContentController addScriptMessageHandler:self name:self.responseName];
     
     self.webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:webConfiguration];
@@ -117,6 +119,9 @@
         self.result = nil;
         self.responseJson = nil;
     }
+    
+    [self loadReportView];
+
 }
 
 /* Camera 권한 체크 */
