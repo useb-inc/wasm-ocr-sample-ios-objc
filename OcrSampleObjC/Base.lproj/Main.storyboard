@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HAj-Pq-7fo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HAj-Pq-7fo">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="RLd-AG-JFt">
-                                <rect key="frame" x="46.666666666666657" y="239" width="300" height="374"/>
+                                <rect key="frame" x="46.666666666666657" y="134" width="300" height="584"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qSU-3M-qOj">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="84"/>
@@ -40,7 +40,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Klf-Nh-kdA">
-                                        <rect key="frame" x="0.0" y="114" width="300" height="260"/>
+                                        <rect key="frame" x="0.0" y="114" width="300" height="470"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Kv-wZ-7AM">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
@@ -100,6 +100,51 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="ocrButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SzG-0m-dno"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gfg-Ca-Wni">
+                                                <rect key="frame" x="0.0" y="280" width="300" height="50"/>
+                                                <color key="backgroundColor" name="alcheraColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="ixb-1Y-LWi"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="주민등록증/운전면허증           + 사본판별" titleAlignment="center">
+                                                    <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="ocrButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w05-CL-mfH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zhp-fo-Dvc">
+                                                <rect key="frame" x="0.0" y="350" width="300" height="50"/>
+                                                <color key="backgroundColor" name="alcheraColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="XSH-F2-HSV"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="국내여권/해외여권       + 사본판별" titleAlignment="center">
+                                                    <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="ocrButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TdZ-e5-trP"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Fxq-Zx-5h1">
+                                                <rect key="frame" x="0.0" y="420" width="300" height="50"/>
+                                                <color key="backgroundColor" name="alcheraColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="vCp-NS-NVm"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="외국인등록증  + 사본판별" titleAlignment="center">
+                                                    <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="ocrButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oIu-8m-JzJ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -344,7 +389,7 @@
     <resources>
         <image name="alcheraLogo" width="395" height="121"/>
         <namedColor name="alcheraColor">
-            <color red="0.0" green="0.2627450980392157" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.2630000114440918" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

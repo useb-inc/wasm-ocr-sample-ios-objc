@@ -209,6 +209,9 @@
         case passport:  return @"passport";
         case alien:     return @"alien";
         case credit:    return @"credit";
+        case idcard_ssa: return @"idcard-ssa";
+        case passport_ssa: return @"passport-ssa";
+        case alien_ssa: return @"alien-ssa";
     }
 }
 

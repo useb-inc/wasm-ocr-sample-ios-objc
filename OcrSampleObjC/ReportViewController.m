@@ -91,6 +91,9 @@
         case passport:  return @"국내여권/해외여권";
         case alien:     return @"외국인등록증";
         case credit:    return @"신용카드";
+        case idcard_ssa:    return @"주민등록증/운전면허증 + 사본판별";
+        case passport_ssa:  return @"국내여권/해외여권 + 사본판별";
+        case alien_ssa:     return @"외국인등록증 + 사본판별";
     }
 }
 

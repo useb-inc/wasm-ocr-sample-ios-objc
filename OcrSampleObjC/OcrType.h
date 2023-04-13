@@ -12,7 +12,10 @@ typedef enum OcrType {
     idcard,
     passport,
     alien,
-    credit
+    credit,
+    idcard_ssa,
+    passport_ssa,
+    alien_ssa
 } OcrType;
 
 #endif /* OcrType_h */
