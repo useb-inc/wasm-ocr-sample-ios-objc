@@ -172,7 +172,7 @@
 - (nullable NSString *)encodedPostMessage {
     NSDictionary *jsonDictionary = @{
         @"ocrType": [self ocrTypeToString],
-        @"settings": @{@"licenseKey": @"FPkTB6QsFFW5YwiqAa2zk5yy0ylLfYSryPM1fnVJKLgWBk6FgEPMBP9RJiCd24ldGurGnkAUPatzrf9Km90ADqjlTF/FHFyculQP21k4pxkfbSRs="}
+        @"settings": @{@"licenseKey": @"FPkTBLFIa/Tn/mCZ5WKPlcuDxyb2bJVPSURXacnhj2d82wm39/tFIjCPpMsiXoPxGbN6G6l5gSLMBfwB6nwgIJZFWX0WlS1Jl49321wADP7yEhxE="}
     };
     
     // JSON -> encodeURIComponent -> Base64Encoding
