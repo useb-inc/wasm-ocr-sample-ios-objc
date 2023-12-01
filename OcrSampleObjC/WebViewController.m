@@ -53,6 +53,11 @@
     
     self.webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:webConfiguration];
     [self.webView setUIDelegate:self];
+    
+#ifdef DEBUG
+    self.webView.inspectable = YES;
+#endif
+    
     self.view = self.webView;
 }
 
