@@ -119,6 +119,9 @@
     } else if ([ocrResponse.result isEqualToString:@"failed"]) {
         NSLog(@"OCR 작업이 실패했습니다.");
         self.responseJson = decodedMessage;
+    } else if ([ocrResponse.result isEqualToString:@"error"]) {
+        NSLog(@"오류가 발생했습니다. %@", decodedMessage);
+        self.responseJson = decodedMessage;
     } else {
         NSLog(@"유효하지 않은 결과입니다. %@", ocrResponse.result);
         self.result = nil;
