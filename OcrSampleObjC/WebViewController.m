@@ -35,7 +35,7 @@
 - (void)loadView {
     WKWebViewConfiguration *webConfiguration = [WKWebViewConfiguration new];
     [webConfiguration setAllowsInlineMediaPlayback:YES];
-    webConfiguration.preferences.javaScriptEnabled = YES;
+    webConfiguration.defaultWebpagePreferences.allowsContentJavaScript = YES;
     
     // OCR 정보를 담은 postMessage 설정
     NSString *requestData = [self encodedPostMessage];
@@ -55,7 +55,9 @@
     [self.webView setUIDelegate:self];
     
 #ifdef DEBUG
-    self.webView.inspectable = YES;
+    if (@available(iOS 16.4, *)) {
+        self.webView.inspectable = YES;
+    }
 #endif
     
     self.view = self.webView;
@@ -175,7 +177,7 @@
 - (nullable NSString *)encodedPostMessage {
     NSDictionary *jsonDictionary = @{
         @"ocrType": [self ocrTypeToString],
-        @"settings": @{@"licenseKey": @"FPkTBLFIa/Tn/mCZ5WKPlcuDxyb2bJVPSURXacnhj2d82wm39/tFIjCPpMsiXoPxGbN6G6l5gSLMBfwB6nwgIJZFWX0WlS1Jl49321wADP7yEhxE="}
+        @"settings": @{@"licenseKey": @""}
     };
     
     // JSON -> encodeURIComponent -> Base64Encoding

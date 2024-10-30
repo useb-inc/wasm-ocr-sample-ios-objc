@@ -66,19 +66,31 @@
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSError *error;
     
-    if (jsonData != nil) {
-        id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+    NSMutableDictionary *mutableJsonDict = [jsonDict mutableCopy];
+    
+    if (error == nil) {
+        NSDictionary *reviewResultDict = [mutableJsonDict valueForKey: @"review_result"];
+        NSMutableDictionary *mutableReviewResultDict = [reviewResultDict mutableCopy];
+        
+        NSString *ocrFaceImgStr = [reviewResultDict valueForKey: @"ocr_face_image"];
+        NSString *ocrMaskingImgStr = [reviewResultDict valueForKey: @"ocr_masking_image"];
+        NSString *ocrOriginImgStr = [reviewResultDict valueForKey: @"ocr_origin_image"];
+        
+        [mutableReviewResultDict setValue:[[ocrFaceImgStr substringToIndex:20] stringByAppendingString:@"...생략..."] forKey:@"ocr_face_image"];
+        [mutableReviewResultDict setValue:[[ocrMaskingImgStr substringToIndex:20] stringByAppendingString:@"...생략..."] forKey:@"ocr_masking_image"];
+        [mutableReviewResultDict setValue:[[ocrOriginImgStr substringToIndex:20] stringByAppendingString:@"...생략..."] forKey:@"ocr_origin_image"];
+        [mutableJsonDict setValue:mutableReviewResultDict forKey:@"review_result"];
+        
+        NSData *prettyData = [NSJSONSerialization dataWithJSONObject:mutableJsonDict options:(NSJSONWritingOptions)(NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys) error:&error];
         if (error == nil) {
-            NSData *prettyData = [NSJSONSerialization dataWithJSONObject:jsonObject options:NSJSONWritingPrettyPrinted error:&error];
-            if (error == nil) {
-                NSString *prettyString = [[NSString alloc] initWithData:prettyData encoding:NSUTF8StringEncoding];
-                return prettyString;
-            } else {
-                NSLog(@"Json 데이터 변환에 실패했습니다. Error: %@", error.localizedDescription);
-            }
+            NSString *prettyString = [[NSString alloc] initWithData:prettyData encoding:NSUTF8StringEncoding];
+            return prettyString;
         } else {
             NSLog(@"Json 데이터 변환에 실패했습니다. Error: %@", error.localizedDescription);
         }
+    } else {
+        NSLog(@"Json 데이터 변환에 실패했습니다. Error: %@", error.localizedDescription);
     }
     
     return jsonString;
